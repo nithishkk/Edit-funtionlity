@@ -11,7 +11,7 @@ const data =[
 const TodoItem = ({ itemProp, handleChange, delTodo }) => {
   const [editing, setEditing] = useState(false);
   const[name,setName]=useState('')
-  const[dev,setDev]=useState('nithish')
+  const[dev,setDev]=useState(data)
   // ...
   // const handleEditing = () => {
   //   setEditing(true);
@@ -26,19 +26,24 @@ const TodoItem = ({ itemProp, handleChange, delTodo }) => {
     const hange= useCallback(
       (e,val) => {
         console.log(val,'val')
-        setDev(e.target.value)
+      setName(e.target.value)
       },
       [],)
   return (
     
       <div >
-        {data?.map((item,index)=>{
+        {/* {data?.map((item,index)=>{
           return 
-        })}
-        {editing && (
+        })} */}
+        {dev?.map((item,index)=>(
+
+            editing ?  <input type='text' value={item.name<item.id} onChange={(e,value)=>hange(e,value)}/>:""
+        ))}
+        {/* {editing && (
+          
           <input type='text' value={dev} onChange={(e,value)=>hange(e,value)}/>
 
-        )}
+        )} */}
         <button onClick={handleEditing}>Edit</button>
       
   {name}
